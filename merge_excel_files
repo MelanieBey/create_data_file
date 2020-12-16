@@ -1,0 +1,21 @@
+#DATA creation
+library(readxl)
+library(coin)
+
+setwd('/pathtofolder')  #put all your xlsx in this folder
+fileList<-list.files(pattern = '.xlsx')
+datFram<-data.frame()
+for (file in fileList ) 
+{
+  dat<-as.data.frame(read_excel(file,skip = 9)
+  dat$IndividualID<-file #add individualID
+  datFram<-rbind(datFram,dat)
+}
+#Check
+table(datFram$IndividualID)#7 files
+#View(datFram) #Overview
+
+#export
+write.csv(datFram,'namemergefile.csv')
+
+
