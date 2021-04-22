@@ -1,3 +1,5 @@
+library(readxl)
+
 setwd('/path')#put all your xlsx in this folder
 fileList<-list.files(pattern = '.xlsx')
 datFram<-data.frame()
