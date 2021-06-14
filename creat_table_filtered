@@ -3,3 +3,9 @@ data <- read.table("/path/doc.csv", header=TRUE, sep=";", na.strings="NA", dec="
 ## creates a table from the filtered data
 data_1_a <- data[data$CategoryNum=="1" & data$CategoryLetter=="a" , ]
 data_2_b <- data[data$CategoryNum=="2" & data$CategoryLetter=="b" , ]
+
+
+install.packages("")
+library(sjmisc)
+library(magrittr)
+data$colUwanttofactor <- as.factor(data$colUwanttofactor)
