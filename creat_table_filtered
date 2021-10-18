@@ -3,7 +3,8 @@ data <- read.table("/path/doc.csv", header=TRUE, sep=";", na.strings="NA", dec="
 ## creates a table from the filtered data
 data_1_a <- data[data$CategoryNum=="1" & data$CategoryLetter=="a" , ]
 data_2_b <- data[data$CategoryNum=="2" & data$CategoryLetter=="b" , ]
-
+sub <- data[data$group=="1" | data$group=="2" ,]
+sub$groups <- data$group[ , drop=TRUE]
 
 install.packages("")
 library(sjmisc)
