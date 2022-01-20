@@ -22,7 +22,6 @@ chunk <- function(t,n) split(t, cut(seq_along(t), n, labels = FALSE))
 tvector <- t(data.frame(chunk(t,n)))
 ID <- data.frame(ID)
 tvector <- data.frame(tvector)
-df<-merge(ID,tvector,all= T)
 ID_df <- merge("ID",Behaviorlist,all=T)
 names(df)<-paste(ID_df)
 
