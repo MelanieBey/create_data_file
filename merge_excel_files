@@ -22,6 +22,7 @@ chunk <- function(t,n) split(t, cut(seq_along(t), n, labels = FALSE))
 tvector <- t(data.frame(chunk(t,n)))
 ID <- data.frame(ID)
 tvector <- data.frame(tvector)
+df = 
 ID_df <- merge("ID",Behaviorlist,all=T)
 names(df)<-paste(ID_df)
 
@@ -29,6 +30,6 @@ names(df)<-paste(ID_df)
 rm(dat,datFram,ID,ID_df,t,tvector,file,fileList,n,nb,Behaviorlist,chunk)
 
 ####export
-#write.csv(datFram,'df.csv')
+#write.csv(df,'df.csv')
 
 
