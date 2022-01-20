@@ -27,5 +27,6 @@ tvector$new_col <- ID
 ID <- data.frame(ID)
 ID_df <- merge(Behaviorlist,"ID",all=T)
 names(tvector)<-paste(ID_df)
+tvector$ID <- sub(".xlsx", "", tvector$ID)
 
 rm(dat,datFram,ID,ID_df,t,file,fileList,n,nb,Behaviorlist,chunk)
