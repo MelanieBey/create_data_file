@@ -1,6 +1,9 @@
-library(readxl)
+### Create data
+##set up your project
+nb <- 5 ###  number of behavior you used
 
-setwd('/path')#put all your xlsx in this folder
+library(readxl)
+setwd('/PathToYourFolder/EXPORT_boris')#put all your xlsx in this folder
 fileList<-list.files(pattern = '.xlsx')
 datFram<-data.frame()
 for (file in fileList ) {
@@ -8,9 +11,25 @@ for (file in fileList ) {
   dat$IndividualID<-file #add individualID
   datFram<-rbind(datFram,dat)
 }
-  #Check
-table(datFram$IndividualID)#7 files
-  #View(datFram) #Overview
 
-  #export
-write.csv(datFram,'name.csv')
+library(chunked)
+library(dplyr)
+t <- data.matrix(datFram[ ,6])
+Behaviorlist <- data.matrix(t(datFram[1:nb,2]))
+ID <- data.matrix(datFram[ seq(1, length(t), by=length(Behaviorlist)),11])
+n <- length(t)/length(Behaviorlist)
+chunk <- function(t,n) split(t, cut(seq_along(t), n, labels = FALSE)) 
+tvector <- t(data.frame(chunk(t,n)))
+ID <- data.frame(ID)
+tvector <- data.frame(tvector)
+df<-merge(ID,tvector,all= T)
+ID_df <- merge("ID",Behaviorlist,all=T)
+names(df)<-paste(ID_df)
+
+###remove unnecessary 
+rm(dat,datFram,ID,ID_df,t,tvector,file,fileList,n,nb,Behaviorlist,chunk)
+
+####export
+#write.csv(datFram,'df.csv')
+
+
