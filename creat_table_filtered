@@ -10,3 +10,5 @@ install.packages("")
 library(sjmisc)
 library(magrittr)
 data$colUwanttofactor <- as.factor(data$colUwanttofactor)
+
+data2=data[data$factor!="B",] #remove B from data set
