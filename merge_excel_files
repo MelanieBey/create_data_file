@@ -27,3 +27,6 @@ names(tvector)<-paste(ID_df)
 tvector$ID <- sub(".xlsx", "", tvector$ID)
 
 rm(dat,datFram,ID,ID_df,t,file,fileList,n,nb,Behaviorlist,chunk)
+
+write.csv(tvector,'mydata.csv')
+
