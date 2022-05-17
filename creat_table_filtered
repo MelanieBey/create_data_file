@@ -1,14 +1,24 @@
+install.packages("")
+library(sjmisc)
+library(magrittr)
+library(dplyr)
+
+## Upload
 data <- read.table("/path/doc.csv", header=TRUE, sep=";", na.strings="NA", dec=",", strip.white=TRUE)
+
+## Change variable
+data$colUwanttofactor <- as.factor(data$colUwanttofactor)
+data <- data %>% mutate_if(is.character,as.factor)
+data <- data %>% mutate_if(is.integer,as.factor)
 
 ## creates a table from the filtered data
 data_1_a <- data[data$CategoryNum=="1" & data$CategoryLetter=="a" , ]
 data_2_b <- data[data$CategoryNum=="2" & data$CategoryLetter=="b" , ]
 sub <- data[data$group=="1" | data$group=="2" ,]
 sub$groups <- data$group[ , drop=TRUE]
-
-install.packages("")
-library(sjmisc)
-library(magrittr)
-data$colUwanttofactor <- as.factor(data$colUwanttofactor)
-
 data2=data[data$factor!="B",] #remove B from data set
+
+## Nubers
+summary(data[data$explanatory_variable1=="A",]$response_variable1
+
+
